@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check.c                                         :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpradene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 17:18:31 by lpradene          #+#    #+#             */
-/*   Updated: 2022/12/04 22:47:01 by lpradene         ###   ########.fr       */
+/*   Created: 2023/01/28 03:31:15 by lpradene          #+#    #+#             */
+/*   Updated: 2023/01/28 03:31:57 by lpradene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	ft_check_dup(t_list *lst, int n)
 	}
 }
 
-int ft_strncmp(const char *str1, const char *str2, size_t n)                    
-{                                                                               
-    size_t  i;
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
+{																				
+	size_t	i;
 
-    i = 0;
-    while (i < n)
-    {
+	i = 0;
+	while (i < n)
+	{
 		if ((unsigned char)str1[i] != (unsigned char)str2[i])
 			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 		i++;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpradene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 00:52:24 by lpradene          #+#    #+#             */
-/*   Updated: 2023/01/28 00:52:26 by lpradene         ###   ########.fr       */
+/*   Created: 2023/01/28 03:28:59 by lpradene          #+#    #+#             */
+/*   Updated: 2023/01/28 03:29:01 by lpradene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	ft_chunk(t_list *a, t_list *b, int chunk)
 			if (!element)
 				return ;
 			if (element->index < pivot)
-                ft_instruction(a, b, "pb");
+				ft_instruction(a, b, "pb");
 			else
-                ft_instruction(a, b, "ra");
+				ft_instruction(a, b, "ra");
 		}
 	}
 }

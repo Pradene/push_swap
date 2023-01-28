@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort2.c                                         :+:      :+:    :+:   */
+/*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpradene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 04:12:41 by lpradene          #+#    #+#             */
-/*   Updated: 2023/01/26 04:12:42 by lpradene         ###   ########.fr       */
+/*   Created: 2023/01/28 00:52:24 by lpradene          #+#    #+#             */
+/*   Updated: 2023/01/28 00:52:26 by lpradene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_sort2a(t_list *a)
+void	ft_chunk(t_list *a, t_list *b, int chunk)
 {
 	t_element	*element;
+	int			pivot;
+	int			size;
+	int			i;
 
-	if (ft_lstsize(a) < 2)
-		return ;
 	element = a->first;
-	if (element->index > element->next->index)
-		ft_swap(a, "sa\n");
-}
-
-void	ft_sort2b(t_list *b)
-{
-	t_element	*element;
-
-	if (ft_lstsize(b) < 2)
-		return ;
-	element = b->first;
-	if (element->index < element->next->index)
-		ft_swap(b, "sb\n");
+	size = ft_lstsize(a);
+	i = 0;
+	while (size * (++i) / chunk <= size)
+	{
+		pivot = size * i / chunk;
+		while (ft_getmin(a, 0) < pivot)
+		{
+			element = a->first;
+			if (!element)
+				return ;
+			if (element->index < pivot)
+				ft_push_b(a, b);
+			else
+				ft_rotate(a, "ra\n");
+		}
+	}
 }

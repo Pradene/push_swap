@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   itoa.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpradene <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 03:01:19 by lpradene          #+#    #+#             */
-/*   Updated: 2023/01/26 03:01:21 by lpradene         ###   ########.fr       */
+/*   Created: 2023/01/28 00:37:39 by lpradene          #+#    #+#             */
+/*   Updated: 2023/01/28 00:37:40 by lpradene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,6 @@ int	ft_strlen(const char *s)
 	while (s[n])
 		++n;
 	return (n);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	value;
-	int	sign;
-
-	i = 0;
-	value = 0;
-	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-		sign *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		value = value * 10 + str[i] - 48;
-		i++;
-	}
-	return (value * sign);
 }
 
 static int	count(int n)
@@ -63,7 +40,7 @@ static int	count(int n)
 	return (len);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+static void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
@@ -73,7 +50,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_strdup(const char *s)
+static char	*ft_strdup(const char *s)
 {
 	char	*str;
 	int		size;

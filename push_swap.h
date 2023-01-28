@@ -37,7 +37,11 @@ int			ft_lstsize(t_list *lst);
 void		ft_lstadd(t_list *lst, int n);
 void		ft_lstclear(t_list *lst);
 
+void		ft_lstprint(t_list *a, t_list *b);
+
 int			ft_check(t_list *lst);
+void		ft_check_dup(t_list *lst, int n);
+void		ft_check_args(t_list *lst, int n, char *str);
 
 void		ft_init(t_list *a, int argc, char **argv);
 
@@ -50,7 +54,10 @@ void		ft_push_b(t_list *a, t_list *b);
 int			ft_getmax(t_list *lst);
 int			ft_getmin(t_list *lst, int n);
 int			ft_get_pos(t_list *lst, int n);
+int			ft_get_move(t_list *lst, int n);
+int			ft_get_nmove(t_list *lst, int n);
 
+void		ft_chunk(t_list *a, t_list *b, int chunk);
 void		ft_push_swap(t_list *a, t_list *b, int arg);
 
 int			ft_strlen(const char *s);

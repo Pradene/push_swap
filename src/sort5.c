@@ -21,7 +21,7 @@ static void	ft_lstsplit(t_list *a, t_list *b)
 	while (ft_getmin(a, 0) < size / 2)
 	{
 		element = a->first;
-		if (element->index < 2)
+		if (element->index < size / 2)
 			ft_push_b(a, b);
 		else
 			ft_rotate(a, "ra\n");

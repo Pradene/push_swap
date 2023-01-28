@@ -26,6 +26,5 @@ int	main(int argc, char **argv)
 		ft_push_swap(&a, &b, argc - 1);
 	ft_lstclear(&a);
 	ft_lstclear(&b);
-
 	return (0);
 }

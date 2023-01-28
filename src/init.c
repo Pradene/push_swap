@@ -12,7 +12,23 @@
 
 #include "../push_swap.h"
 
-static int	ft_small(t_list *lst, int n)
+static int	ft_get_min(t_list* lst)
+{
+	t_element	*element;
+	int			min;
+
+	min = INT_MAX;
+	element = lst->first;
+	while (element)
+	{
+		if (element->n < min)
+			min = element->n;
+		element = element->next;
+	}
+	return (min);
+}
+
+static int	ft_get_minabove(t_list *lst, int n)
 {
 	t_element	*element;
 	int			min;
@@ -36,48 +52,19 @@ static void	ft_init_index(t_list *lst)
 	int			i;
 
 	size = ft_lstsize(lst);
-	min = INT_MIN;
+	min = ft_get_min(lst);
 	i = -1;
 	while (++i < size)
 	{
 		element = lst->first;
 		while (element)
 		{
-			if (element->n > min)
+			if (element->n >= min)
 				element->index = i;
 			element = element->next;
 		}
-		min = ft_small(lst, min);
+		min = ft_get_minabove(lst, min);
 	}
-}
-
-static void	ft_check_dup(t_list *lst, int n)
-{
-	t_element	*element;
-
-	element = lst->first;
-	while (element)
-	{
-		if (n == element->n)
-		{
-			write(2, "Error\n", 6);
-			ft_lstclear(lst);
-			exit(EXIT_FAILURE);
-		}
-		element = element->next;
-	}
-}
-
-static void	ft_check_args(t_list *lst, int n, char *str)
-{
-	char	*s;
-
-	s = ft_itoa(n);
-	if (ft_strlen(s) != ft_strlen(str) || ((*str == '-' || *str == '+')
-			&& ft_strlen(str) == 1))
-		return (write(2, "Error\n", 6), free(s), ft_lstclear(lst),
-			exit(EXIT_FAILURE));
-	free(s);
 }
 
 static void	ft_init_n(t_list *a, int argc, char **argv)

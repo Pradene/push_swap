@@ -10,19 +10,22 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES	= check.c \
+FILES	= atoi.c \
+		check.c \
+		chunk.c \
 		init.c \
+		itoa.c \
 		lst.c \
+		main.c \
 		push.c \
 		push_swap.c \
+		push_swap_utils.c \
 		reverse_rotate.c \
 		rotate.c \
 		sort2.c \
 		sort3.c \
 		sort5.c \
 		swap.c \
-		utils.c \
-		main.c \
 
 SRCS = ${addprefix src/, ${FILES}}
 

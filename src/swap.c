@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	ft_swap(t_list *lst, char *s)
+void	ft_swap(t_list *lst)
 {
 	int	tmp_n;
 	int	tmp_i;
@@ -25,5 +25,4 @@ void	ft_swap(t_list *lst, char *s)
 	lst->first->index = lst->first->next->index;
 	lst->first->next->n = tmp_n;
 	lst->first->next->index = tmp_i;
-	write(1, s, 3);
 }

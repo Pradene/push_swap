@@ -38,7 +38,7 @@ int	ft_get_elemindex(t_list *a, t_list *b, int n)
 	return (elem_index);
 }
 
-void	ft_move_b(t_list *b, int n)
+void	ft_move_b(t_list *a, t_list *b, int n)
 {
 	int	pos;
 	int	size;
@@ -47,13 +47,13 @@ void	ft_move_b(t_list *b, int n)
 	pos = ft_get_pos(b, n);
 	if (pos > size / 2)
 		while (b->first->index != n)
-			ft_reverse_rotate(b, "rrb\n");
+			ft_instruction(a, b, "rrb");
 	else
 		while (b->first->index != n)
-			ft_rotate(b, "rb\n");
+			ft_instruction(a, b, "rb");
 }
 
-void	ft_move_a(t_list *a, int n)
+void	ft_move_a(t_list *a, t_list *b, int n)
 {
 	int	size;
 	int	pos;
@@ -66,13 +66,13 @@ void	ft_move_a(t_list *a, int n)
 		return ;
 	if (min == INT_MAX)
 		while (a->first->index != ft_getmin(a, 0))
-			ft_rotate(a, "ra\n");
+			ft_instruction(a, b, "ra");
 	else if (pos > size / 2)
 		while (a->first->index != min)
-			ft_reverse_rotate(a, "rra\n");
+			ft_instruction(a, b, "rra");
 	else
 		while (a->first->index != min)
-			ft_rotate(a, "ra\n");
+			ft_instruction(a, b, "ra");
 }
 
 void	ft_sort(t_list *a, t_list *b, int n)
@@ -82,9 +82,9 @@ void	ft_sort(t_list *a, t_list *b, int n)
 	while (ft_getmax(b) >= n)
 	{
 		elem_index = ft_get_elemindex(a, b, n);
-		ft_move_b(b, elem_index);
-		ft_move_a(a, elem_index);
-		ft_push_a(a, b);
+		ft_move_b(a, b, elem_index);
+		ft_move_a(a, b, elem_index);
+		ft_instruction(a, b, "pa");
 	}
 }
 
@@ -94,9 +94,9 @@ void	ft_push_swap(t_list *a, t_list *b, int arg)
 	int	i;
 
 	if (arg == 2)
-		return ((void)ft_sort2a(a));
+		return ((void)ft_sort2a(a, b));
 	else if (arg == 3)
-		return ((void)ft_sort3a(a));
+		return ((void)ft_sort3a(a, b));
 	else if (arg < 6)
 		return ((void)ft_sort5(a, b));
 	else if (arg < 100)
@@ -110,5 +110,5 @@ void	ft_push_swap(t_list *a, t_list *b, int arg)
 	while (chunk - ++i >= 0)
 		ft_sort(a, b, arg * (chunk - i) / chunk);
 	while (a->first->index != 0)
-		ft_reverse_rotate(a, "rra\n");
+		ft_instruction(a, b, "rra");
 }

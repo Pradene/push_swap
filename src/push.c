@@ -12,28 +12,14 @@
 
 #include "../push_swap.h"
 
-void	ft_push_a(t_list *a, t_list *b)
+void	ft_push(t_list *from, t_list *to)
 {
-	t_element	*tmp;
+	t_element	*e;
 
-	if (!ft_lstsize(b))
+	if (!ft_lstsize(from))
 		return ;
-	tmp = b->first;
-	b->first = b->first->next;
-	tmp->next = a->first;
-	a->first = tmp;
-	write(1, "pa\n", 3);
-}
-
-void	ft_push_b(t_list *a, t_list *b)
-{
-	t_element	*tmp;
-
-	if (!ft_lstsize(a))
-		return ;
-	tmp = a->first;
-	a->first = a->first->next;
-	tmp->next = b->first;
-	b->first = tmp;
-	write(1, "pb\n", 3);
+	e = from->first;
+	from->first = from->first->next;
+	e->next = to->first;
+	to->first = e;
 }

@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	ft_reverse_rotate(t_list *lst, char *s)
+void	ft_reverse_rotate(t_list *lst)
 {
 	t_element	*tmp;
 
@@ -22,5 +22,4 @@ void	ft_reverse_rotate(t_list *lst, char *s)
 	ft_lstslast(lst)->next = NULL;
 	tmp->next = lst->first;
 	lst->first = tmp;
-	write(1, s, 4);
 }

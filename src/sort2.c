@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	ft_sort2a(t_list *a)
+void	ft_sort2a(t_list *a, t_list *b)
 {
 	t_element	*element;
 
@@ -20,10 +20,10 @@ void	ft_sort2a(t_list *a)
 		return ;
 	element = a->first;
 	if (element->index > element->next->index)
-		ft_swap(a, "sa\n");
+		ft_instruction(a, b, "sa");
 }
 
-void	ft_sort2b(t_list *b)
+void	ft_sort2b(t_list *a, t_list *b)
 {
 	t_element	*element;
 
@@ -31,5 +31,5 @@ void	ft_sort2b(t_list *b)
 		return ;
 	element = b->first;
 	if (element->index < element->next->index)
-		ft_swap(b, "sb\n");
+		ft_instruction(a, b, "sb");
 }

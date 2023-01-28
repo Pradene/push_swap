@@ -22,9 +22,9 @@ static void	ft_lstsplit(t_list *a, t_list *b)
 	{
 		element = a->first;
 		if (element->index < size / 2)
-			ft_push_b(a, b);
+			ft_instruction(a, b, "pb");
 		else
-			ft_rotate(a, "ra\n");
+			ft_instruction(a, b, "ra");
 	}
 }
 
@@ -32,13 +32,13 @@ void	ft_sort5(t_list *a, t_list *b)
 {
 	ft_lstsplit(a, b);
 	if (ft_lstsize(a) == 3)
-		ft_sort3a(a);
+		ft_sort3a(a, b);
 	else
-		ft_sort2a(a);
+		ft_sort2a(a, b);
 	if (ft_lstsize(b) == 3)
-		ft_sort3b(b);
+		ft_sort3b(a, b);
 	else
-		ft_sort2b(b);
+		ft_sort2b(a, b);
 	while (b->first)
-		ft_push_a(a, b);
+		ft_instruction(a, b, "pa");
 }

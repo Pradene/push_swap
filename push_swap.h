@@ -45,11 +45,11 @@ void		ft_check_args(t_list *lst, int n, char *str);
 
 void		ft_init(t_list *a, int argc, char **argv);
 
-void		ft_rotate(t_list *lst, char *s);
-void		ft_swap(t_list *lst, char *s);
-void		ft_reverse_rotate(t_list *lst, char *s);
-void		ft_push_a(t_list *a, t_list *b);
-void		ft_push_b(t_list *a, t_list *b);
+void		ft_rotate(t_list *lst);
+void		ft_swap(t_list *lst);
+void		ft_reverse_rotate(t_list *lst);
+void		ft_push(t_list *from, t_list *to);
+void		ft_instruction(t_list *a, t_list *b, char *s);
 
 int			ft_getmax(t_list *lst);
 int			ft_getmin(t_list *lst, int n);
@@ -63,11 +63,12 @@ void		ft_push_swap(t_list *a, t_list *b, int arg);
 int			ft_strlen(const char *s);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int n);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
 
-void		ft_sort2a(t_list *a);
-void		ft_sort2b(t_list *b);
-void		ft_sort3a(t_list *a);
-void		ft_sort3b(t_list *b);
+void		ft_sort2a(t_list *a, t_list *b);
+void		ft_sort2b(t_list *a, t_list *b);
+void		ft_sort3a(t_list *a, t_list *b);
+void		ft_sort3b(t_list *a, t_list *b);
 void		ft_sort5(t_list *a, t_list *b);
 
 #endif

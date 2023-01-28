@@ -82,27 +82,27 @@ void	ft_lstclear(t_list *lst)
 	}
 }
 
-void	ft_lstprint(t_list *a, t_list *b)
-{
-	t_element	*ae;
-	t_element	*be;
+// void	ft_lstprint(t_list *a, t_list *b)
+// {
+// 	t_element	*ae;
+// 	t_element	*be;
 
-	ae = a->first;
-	be = b->first;
-	while (ae || be)
-	{
-		if (ae)
-			printf("%d %d", ae->index, ae->n);
-		else
-			printf(" ");
-		printf(" | ");
-		if (be)
-			printf("%d %d\n", be->index, be->n);
-		else
-			printf("\n");
-		if (ae)
-			ae = ae->next;
-		if (be)
-			be = be->next;
-	}
-}
+// 	ae = a->first;
+// 	be = b->first;
+// 	while (ae || be)
+// 	{
+// 		if (ae)
+// 			printf("%d %d", ae->index, ae->n);
+// 		else
+// 			printf(" ");
+// 		printf(" | ");
+// 		if (be)
+// 			printf("%d %d\n", be->index, be->n);
+// 		else
+// 			printf("\n");
+// 		if (ae)
+// 			ae = ae->next;
+// 		if (be)
+// 			be = be->next;
+// 	}
+// }

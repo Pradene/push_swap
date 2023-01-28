@@ -31,9 +31,9 @@ void	ft_chunk(t_list *a, t_list *b, int chunk)
 			if (!element)
 				return ;
 			if (element->index < pivot)
-				ft_push_b(a, b);
+                ft_instruction(a, b, "pb");
 			else
-				ft_rotate(a, "ra\n");
+                ft_instruction(a, b, "ra");
 		}
 	}
 }

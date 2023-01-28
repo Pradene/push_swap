@@ -14,6 +14,7 @@ FILES	= atoi.c \
 		check.c \
 		chunk.c \
 		init.c \
+		instruction.c \
 		itoa.c \
 		lst.c \
 		main.c \

@@ -1,35 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_sort2.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lpradene <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 04:12:41 by lpradene          #+#    #+#             */
-/*   Updated: 2023/01/26 04:12:42 by lpradene         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "push_swap.h"
 
-#include "../push_swap.h"
-
-void	ft_sort2a(t_list *a, t_list *b)
-{
-	t_element	*element;
-
-	if (ft_lstsize(a) < 2)
+void	ft_sort2a(t_list **a, t_list **b) {
+	(void)b;
+	if (!a || !*a || ft_lstsize(*a) < 2) {
 		return ;
-	element = a->first;
-	if (element->index > element->next->index)
-		ft_instruction(a, b, "sa");
+	}
+	if (((t_data *)(*a)->content)->index > ((t_data *)(*a)->next->content)->index) {
+		sa(a);
+	}
 }
 
-void	ft_sort2b(t_list *a, t_list *b)
-{
-	t_element	*element;
-
-	if (ft_lstsize(b) < 2)
+void	ft_sort2b(t_list **a, t_list **b) {
+	(void)a;
+	if (!b || !*b || ft_lstsize(*b) < 2) {
 		return ;
-	element = b->first;
-	if (element->index < element->next->index)
-		ft_instruction(a, b, "sb");
+	}
+	if (((t_data *)(*b)->content)->index < ((t_data *)(*b)->next->content)->index) {
+		sb(b);
+	}
 }

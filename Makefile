@@ -1,53 +1,49 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lpradene <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/08 12:33:43 by lpradene          #+#    #+#              #
-#    Updated: 2022/12/12 21:35:10 by lpradene         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-FILES	= atoi.c \
-		check.c \
+FILES = instructions/push.c \
+		instructions/reverse_rotate.c \
+		instructions/rotate.c \
+		instructions/swap.c \
 		chunk.c \
-		init.c \
-		instruction.c \
-		itoa.c \
-		lst.c \
 		main.c \
-		push.c \
+		parsing.c \
 		push_swap.c \
-		push_swap_utils.c \
-		reverse_rotate.c \
-		rotate.c \
 		sort2.c \
 		sort3.c \
 		sort5.c \
-		swap.c \
+		utils.c
 
-SRCS = ${addprefix src/, ${FILES}}
+SRCS_DIR = src
+OBJS_DIR = obj
+
+SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
+OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
+
+LIBFT_DIR = libft
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 CC		= cc
-
-FLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -I./$(LIBFT_DIR)/inc -I./inc -g
 
 NAME	= push_swap
 
-OBJS	= ${SRCS:.c=.o}
+all: $(LIBFT_LIB) $(NAME)
 
-${NAME}: ${OBJS}
-	${CC} ${FLAGS} -o ${NAME} ${OBJS}
+$(LIBFT_LIB):
+	$(MAKE) -C $(LIBFT_DIR)
 
-all: ${NAME}
+$(NAME): $(OBJS) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_LIB)
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f ${OBJS}
+	rm -f $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

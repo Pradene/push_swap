@@ -1,119 +1,121 @@
 #include "push_swap.h"
 
-int ft_getmax(t_list *lst) {
-    t_list  *element;
+int get_max_index_in_stack(t_list *stack) {
+    t_list  *current;
     int     max;
     t_data  *data;
 
     max = INT_MIN;
-    element = lst;
-    while (element) {
-        data = (t_data *)element->content;
+    current = stack;
+    while (current) {
+        data = (t_data *)current->content;
         if (data->index > max) {
             max = data->index;
         }
-        element = element->next;
+        current = current->next;
     }
     return (max);
 }
 
-int ft_getmin(t_list *lst, int n) {
-    t_list  *element;
+int get_min_index_above_n(t_list *stack, int n) {
+    t_list  *current;
     int     min;
     t_data  *data;
 
     min = INT_MAX;
-    element = lst;
-    while (element) {
-        data = (t_data *)element->content;
+    current = stack;
+    while (current) {
+        data = (t_data *)current->content;
         if (data->index < min && data->index >= n) {
             min = data->index;
         }
-        element = element->next;
+        current = current->next;
     }
     return (min);
 }
 
-int ft_get_pos(t_list *lst, int n) {
-    t_list  *element;
+int get_position_of_element_with_index(t_list *stack, int n) {
+    t_list  *current;
     int     pos;
     t_data  *data;
 
-    element = lst;
+    current = stack;
     pos = 0;
-    while (element) {
-        data = (t_data *)element->content;
+    while (current) {
+        data = (t_data *)current->content;
         if (data->index == n) {
             break ;
         }
         ++pos;
-        element = element->next;
+        current = current->next;
     }
     return (pos);
 }
 
-int ft_get_move(t_list *lst, int n) {
+int ft_get_move(t_list *stack, int n) {
     int size;
     int pos;
 
-    size = ft_lstsize(lst);
-    pos = ft_get_pos(lst, n);
+    size = ft_lstsize(stack);
+    pos = get_position_of_element_with_index(stack, n);
     if (size / 2 > pos) {
         return (pos);
     }
     return (size - pos);
 }
 
-int ft_get_nmove(t_list *lst, int n) {
-    if (ft_getmin(lst, n) == INT_MAX) {
+int ft_get_nmove(t_list *stack, int n) {
+    if (get_min_index_above_n(stack, n) == INT_MAX) {
         return (0);
     }
-    return (ft_get_move(lst, ft_getmin(lst, n)));
+    return (ft_get_move(stack, get_min_index_above_n(stack, n)));
 }
 
-int get_min(t_list *lst) {
+int get_min_value(t_list *stack) {
     int     min;
     t_data  *data;
 
     min = INT_MAX;
-    while (lst) {
-        data = (t_data *)lst->content;
-        if (data->n < min)
+    while (stack) {
+        data = (t_data *)stack->content;
+        if (data->n < min) {
             min = data->n;
-        lst = lst->next;
+        }
+        stack = stack->next;
     }
     return (min);
 }
 
-int get_min_above(t_list *lst, int n) {
+int get_min_value_above_n(t_list *stack, int n) {
     int     min;
     t_data  *data;
 
     min = INT_MAX;
-    while (lst) {
-        data = (t_data *)lst->content;
-        if (data->n > n && data->n < min)
+    while (stack) {
+        data = (t_data *)stack->content;
+        if (data->n > n && data->n < min) {
             min = data->n;
-        lst = lst->next;
+        }
+        stack = stack->next;
     }
     return (min);
 }
 
-bool	is_sorted(t_list *lst) {
-	while (lst->next) {
-		if (((t_data *)lst->content)->n > ((t_data *)lst->next->content)->n) {
+bool	is_stack_sorted(t_list *stack) {
+	while (stack->next) {
+		if (((t_data *)stack->content)->n > ((t_data *)stack->next->content)->n) {
 			return (false);
 		}
-		lst = lst->next;
+		stack = stack->next;
 	}
 	return (true);
 }
 
-void	print_stack(t_list *lst) {
+void	print_stack(t_list *stack) {
 	int n;
-	while (lst) {
-		n = ((t_data *)lst->content)->n;
+	while (stack) {
+		n = ((t_data *)stack->content)->n;
 		ft_printf("%d\n", n);
-		lst = lst->next;
+		stack = stack->next;
 	}
 }

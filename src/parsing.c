@@ -28,7 +28,7 @@ static bool	safe_atoi(char *str, int *out) {
 	return (i == (int)ft_strlen(str) && result);
 }
 
-static bool	contains_number(t_list *stack, int value) {
+static bool	stack_contains_n(t_list *stack, int value) {
 	while (stack) {
 		if (((t_data *)stack->content)->n == value) {
 			return (true);
@@ -38,29 +38,29 @@ static bool	contains_number(t_list *stack, int value) {
 	return (false);
 }
 
-static void	compute_final_index(t_list *lst) {
+void	compute_final_index(t_list *stack) {
 	t_list	*tmp;
 	int		min;
 	int		size;
 	int		i;
 
-	size = ft_lstsize(lst);
-	min = get_min(lst);
+	size = ft_lstsize(stack);
+	min = get_min_value(stack);
 	i = 0;
 	while (i < size) {
-		tmp = lst;
+		tmp = stack;
 		while (tmp) {
 			if (((t_data *)tmp->content)->n >= min) {
 				((t_data *)tmp->content)->index = i;
             }
 			tmp = tmp->next;
 		}
-		min = get_min_above(lst, min);
+		min = get_min_value_above_n(stack, min);
         ++i;
 	}
 }
 
-bool	parse_args(char **av, t_list **stack_a) {
+bool	parse_args(char **av, t_list **stack) {
 	int		i;
 	t_data	*data;
 	t_list	*tmp;
@@ -75,7 +75,7 @@ bool	parse_args(char **av, t_list **stack_a) {
 			free(data);
 			return (false);
         }
-		if (contains_number(*stack_a, data->n) == true) {
+		if (stack_contains_n(*stack, data->n) == true) {
 			free(data);
 			return (false);
         }
@@ -84,9 +84,8 @@ bool	parse_args(char **av, t_list **stack_a) {
 			free(data);
             return (false);
         }
-		ft_lstadd_back(stack_a, tmp);
+		ft_lstadd_back(stack, tmp);
 		i++;
 	}
-    compute_final_index(*stack_a);
 	return (true);
 }

@@ -2,13 +2,11 @@ FILES = instructions/push.c \
 		instructions/reverse_rotate.c \
 		instructions/rotate.c \
 		instructions/swap.c \
-		chunk.c \
 		main.c \
 		parsing.c \
 		push_swap.c \
-		sort2.c \
-		sort3.c \
-		sort5.c \
+		sort_three.c \
+		sort_five.c \
 		utils.c
 
 SRCS_DIR = src

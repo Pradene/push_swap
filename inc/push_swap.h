@@ -13,40 +13,40 @@ typedef struct s_data {
 }	t_data;
 
 // Instructions
-void	pa(t_list **b, t_list **a);
-void	pb(t_list **a, t_list **b);
+void	pa(t_list **stack_b, t_list **stack_a);
+void	pb(t_list **stack_a, t_list **stack_b);
 
-void	ra(t_list **a);
-void	rb(t_list **b);
-void	rr(t_list **a, t_list **b);
+void	ra(t_list **stack_a);
+void	rb(t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b);
 
-void	rra(t_list **a);
-void	rrb(t_list **b);
-void	rrr(t_list **a, t_list **b);
+void	rra(t_list **stack_a);
+void	rrb(t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
 
-void	sa(t_list **a);
-void	sb(t_list **b);
-void	ss(t_list **a, t_list **b);
+void	sa(t_list **stack_a);
+void	sb(t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
 
-int		ft_getmax(t_list *lst);
-int		ft_getmin(t_list *lst, int n);
-int		ft_get_pos(t_list *lst, int n);
-int		ft_get_move(t_list *lst, int n);
-int		ft_get_nmove(t_list *lst, int n);
-int		get_min(t_list *lst);
-int		get_min_above(t_list *lst, int n);
+// Utils
+int		get_max_index_in_stack(t_list *stack);
+int		get_min_index_above_n(t_list *stack, int n);
+int		get_position_of_element_with_index(t_list *stack, int n);
+int		ft_get_move(t_list *stack, int n);
+int		ft_get_nmove(t_list *stack, int n);
+int		get_min_value(t_list *stack);
+int		get_min_value_above_n(t_list *stack, int n);
 
-bool	is_sorted(t_list *lst);
-void	ft_chunk(t_list **a, t_list **b, int chunk);
+bool	is_stack_sorted(t_list *stack);
+void	print_stack(t_list *stack);
 
-void	ft_sort2a(t_list **a, t_list **b);
-void	ft_sort2b(t_list **a, t_list **b);
-void	ft_sort3a(t_list **a, t_list **b);
-void	ft_sort3b(t_list **a, t_list **b);
-void	ft_sort5(t_list **a, t_list **b);
-void	print_stack(t_list *lst);
-
-void	push_swap(t_list **a, t_list **b, int arg);
+// Parsing
 bool	parse_args(char **av, t_list **stack_a);
+void	compute_final_index(t_list *stack);
+
+// Sort
+void	sort_three_elements(t_list **stack_a);
+void	sort_five_elements(t_list **stack_a, t_list **stack_b);
+void	push_swap(t_list **stack_a, t_list **stack_b);
 
 #endif

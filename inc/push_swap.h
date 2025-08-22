@@ -32,8 +32,8 @@ void	ss(t_list **stack_a, t_list **stack_b);
 int		get_max_index_in_stack(t_list *stack);
 int		get_min_index_above_n(t_list *stack, int n);
 int		get_position_of_element_with_index(t_list *stack, int n);
-int		ft_get_move(t_list *stack, int n);
-int		ft_get_nmove(t_list *stack, int n);
+int		calculate_rotation_cost(t_list *stack, int n);
+int		calculate_insertion_cost(t_list *stack, int n);
 int		get_min_value(t_list *stack);
 int		get_min_value_above_n(t_list *stack, int n);
 
@@ -47,6 +47,6 @@ void	compute_final_index(t_list *stack);
 // Sort
 void	sort_three_elements(t_list **stack_a);
 void	sort_five_elements(t_list **stack_a, t_list **stack_b);
-void	push_swap(t_list **stack_a, t_list **stack_b);
+void	sort(t_list **stack_a, t_list **stack_b);
 
 #endif

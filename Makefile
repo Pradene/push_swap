@@ -4,9 +4,9 @@ FILES = instructions/push.c \
 		instructions/swap.c \
 		main.c \
 		parsing.c \
-		push_swap.c \
-		sort_three.c \
 		sort_five.c \
+		sort_three.c \
+		sort.c \
 		utils.c
 
 SRCS_DIR = src

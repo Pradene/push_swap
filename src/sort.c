@@ -42,7 +42,7 @@ static int	find_best_element_index(t_list *stack_a, t_list *stack_b, int n) {
 	while (element) {
 		if (((t_data *)element->content)->index >= n) {
 			int idx = ((t_data *)element->content)->index;
-			int cost = ft_get_move(stack_b, idx) + ft_get_nmove(stack_a, idx);
+			int cost = calculate_rotation_cost(stack_b, idx) + calculate_insertion_cost(stack_a, idx);
 			if (cost < move) {
 				elem_index = idx;
 				move = cost;
@@ -109,7 +109,7 @@ static void	chunk_sort(t_list **stack_a, t_list **stack_b, int n) {
 	}
 }
 
-void	push_swap(t_list **stack_a, t_list **stack_b) {
+void	sort(t_list **stack_a, t_list **stack_b) {
 	int	chunk;
 	int size;
 	int	i;
@@ -124,7 +124,7 @@ void	push_swap(t_list **stack_a, t_list **stack_b) {
 	} else if (size < 100) {
 		chunk = 2;
 	} else if (size < 500) {
-		chunk = 5;
+		chunk = 4;
 	} else {
 		chunk = 10;
 	}

@@ -52,7 +52,7 @@ int get_position_of_element_with_index(t_list *stack, int n) {
     return (pos);
 }
 
-int ft_get_move(t_list *stack, int n) {
+int calculate_rotation_cost(t_list *stack, int n) {
     int size;
     int pos;
 
@@ -64,11 +64,11 @@ int ft_get_move(t_list *stack, int n) {
     return (size - pos);
 }
 
-int ft_get_nmove(t_list *stack, int n) {
+int calculate_insertion_cost(t_list *stack, int n) {
     if (get_min_index_above_n(stack, n) == INT_MAX) {
         return (0);
     }
-    return (ft_get_move(stack, get_min_index_above_n(stack, n)));
+    return (calculate_rotation_cost(stack, get_min_index_above_n(stack, n)));
 }
 
 int get_min_value(t_list *stack) {

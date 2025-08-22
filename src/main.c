@@ -18,7 +18,7 @@ int	main(int argc, char **argv) {
 	}
 	compute_final_index(stack_a);
 	if (!is_stack_sorted(stack_a)) {
-		push_swap(&stack_a, &stack_b);
+		sort(&stack_a, &stack_b);
 	}
 	result = !(ft_lstsize(stack_a) == argc && is_stack_sorted(stack_a));
 	ft_lstclear(&stack_a, free);
